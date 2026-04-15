@@ -1,0 +1,23 @@
+# Arquivos gerados automaticamente - não versionar
+output/
+temp/
+
+# Arquivos PFX gerados (contêm chaves privadas!)
+*.pfx
+*.key
+*.p12
+
+# Arquivos temporários de certificado
+*.crt
+*.pem
+*.csr
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editores
+.vscode/
+*.code-workspace
+.idea/

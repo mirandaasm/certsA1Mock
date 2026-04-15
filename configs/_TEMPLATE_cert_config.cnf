@@ -1,0 +1,60 @@
+# =============================================================================
+# Certificado A1 Mockado - TEMPLATE
+# =============================================================================
+# Instrucoes:
+#   1. Copie este arquivo para: cert_config_{CNPJ_SEM_PONTUACAO}.cnf
+#   2. Substitua todos os campos marcados com {PLACEHOLDER}
+#   3. Execute: .\gerar_cert_a1_mock.ps1 -Cnpj {CNPJ_SEM_PONTUACAO}
+# =============================================================================
+# CNPJ (formatado) : {XX.XXX.XXX/XXXX-XX}
+# CNPJ (limpo)     : {XXXXXXXXXXXXXX}
+# Razao Social     : {RAZAO_SOCIAL}
+# Responsavel      : {NOME_RESPONSAVEL}
+# CPF Responsavel  : {XXX.XXX.XXX-XX}
+# =============================================================================
+
+[ req ]
+default_bits        = 2048
+default_md          = sha256
+prompt              = no
+distinguished_name  = dn
+x509_extensions     = v3_ext
+string_mask         = utf8only
+
+[ dn ]
+C  = BR
+ST = {UF}
+L  = {MUNICIPIO}
+O  = {RAZAO_SOCIAL}
+OU = Certificado A1 Mock - Uso Exclusivo para Testes
+CN = {RAZAO_SOCIAL}:{CNPJ_SEM_PONTUACAO}
+
+[ v3_ext ]
+basicConstraints        = CA:FALSE
+keyUsage                = digitalSignature, keyEncipherment, nonRepudiation
+extendedKeyUsage        = clientAuth, emailProtection
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid,issuer
+subjectAltName          = @alt_names
+
+[ alt_names ]
+# OID 2.16.76.1.3.3 = CNPJ (14 chars, sem pontuacao)
+otherName.1 = 2.16.76.1.3.3;UTF8:{CNPJ_SEM_PONTUACAO}
+
+# OID 2.16.76.1.3.1 = DataNasc(8) + CPF(11) + NIS(11) + RG(10)
+otherName.2 = 2.16.76.1.3.1;UTF8:00000000{CPF_SEM_PONTUACAO}0000000000000000000000000000
+
+# OID 2.16.76.1.3.4 = Nome do responsavel
+otherName.3 = 2.16.76.1.3.4;UTF8:{NOME_RESPONSAVEL}
+
+# OID 2.16.76.1.3.6 = CEP (8 digitos, sem hifen)
+otherName.4 = 2.16.76.1.3.6;UTF8:{CEP_SEM_HIFEN}
+
+# OID 2.16.76.1.3.2 = Nome do responsavel (redundancia ICP-Brasil)
+otherName.5 = 2.16.76.1.3.2;UTF8:{NOME_RESPONSAVEL}
+
+# OID 2.16.76.1.3.7 = Endereco completo (sem acentos)
+otherName.6 = 2.16.76.1.3.7;UTF8:{ENDERECO_COMPLETO_SEM_ACENTOS}
+
+# E-mail
+email = {EMAIL}
