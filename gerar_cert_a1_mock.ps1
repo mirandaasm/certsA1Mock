@@ -12,7 +12,7 @@
     CNPJ sem pontuação (somente números e letras). Ex: 02G0NC3Z000173
 
 .PARAMETER Senha
-    Senha do arquivo PFX. Padrão: Iob@2026
+    Senha do arquivo PFX. Padrão: Mock@2026
 
 .PARAMETER ValidadeDias
     Validade do certificado em dias. Padrão: 365
@@ -20,16 +20,16 @@
 .EXAMPLE
     .\gerar_cert_a1_mock.ps1 -Cnpj 02G0NC3Z000173
     .\gerar_cert_a1_mock.ps1 -Cnpj 02G0NC3Z000173 -Senha "MinhaSenha123"
-    .\gerar_cert_a1_mock.ps1 -Cnpj 02G0NC3Z000173 -Senha "Iob@2026" -ValidadeDias 730
+    .\gerar_cert_a1_mock.ps1 -Cnpj 02G0NC3Z000173 -Senha "Teste@2026" -ValidadeDias 730
 #>
 
 param(
-    [Parameter(Mandatory = $true, Position = 0, HelpMessage = "CNPJ sem pontuação (ex: 02G0NC3Z000173)"]
+    [Parameter(Mandatory = $true, Position = 0, HelpMessage = "CNPJ sem pontuação (ex: 02G0NC3Z000173)")]
     [ValidatePattern('^[0-9A-Za-z]{14}$')]
     [string]$Cnpj,
 
     [Parameter(Mandatory = $false)]
-    [string]$Senha = "Iob@2026",
+    [string]$Senha = "Mock@2026",
 
     [Parameter(Mandatory = $false)]
     [int]$ValidadeDias = 365
@@ -45,10 +45,10 @@ $OutputDir   = Join-Path $ScriptDir "output"
 $TempDir     = Join-Path $ScriptDir "temp"
 
 $CnpjUpper   = $Cnpj.ToUpper()
-$CnfFile     = Join-Path $ConfigDir "cert_config_${CnpjUpper}.cnf"
-$PfxFile     = Join-Path $OutputDir "cert_a1_mock_${CnpjUpper}.pfx"
-$KeyFile     = Join-Path $TempDir   "cert_a1_mock_${CnpjUpper}.key"
-$CrtFile     = Join-Path $TempDir   "cert_a1_mock_${CnpjUpper}.crt"
+$CnfFile     = Join-Path $ConfigDir "cert_config.${CnpjUpper}.cnf"
+$PfxFile     = Join-Path $OutputDir "cert_a1_mock.${CnpjUpper}.pfx"
+$KeyFile     = Join-Path $TempDir   "cert_a1_mock.${CnpjUpper}.key"
+$CrtFile     = Join-Path $TempDir   "cert_a1_mock.${CnpjUpper}.crt"
 
 # ============================================================
 # Banner
@@ -56,7 +56,7 @@ $CrtFile     = Join-Path $TempDir   "cert_a1_mock_${CnpjUpper}.crt"
 function Write-Banner {
     Write-Host ""
     Write-Host "  +==================================================+" -ForegroundColor Cyan
-    Write-Host "  |   Gerador de Certificado A1 Mockado (PFX)       |" -ForegroundColor Cyan
+    Write-Host "  |   Gerador de Certificado A1 Mockado (PFX)        |" -ForegroundColor Cyan
     Write-Host "  |   Para testes e validacao de aplicacoes          |" -ForegroundColor Cyan
     Write-Host "  +==================================================+" -ForegroundColor Cyan
     Write-Host ""
@@ -186,7 +186,7 @@ Write-Ok "Temporarios removidos."
 # --- Resumo final ---
 Write-Host ""
 Write-Host "  +==================================================+" -ForegroundColor Green
-Write-Host "  |       CERTIFICADO GERADO COM SUCESSO!           |" -ForegroundColor Green
+Write-Host "  |       CERTIFICADO GERADO COM SUCESSO!            |" -ForegroundColor Green
 Write-Host "  +==================================================+" -ForegroundColor Green
 Write-Host ""
 Write-Host "  Arquivo PFX : " -NoNewline -ForegroundColor White

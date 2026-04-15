@@ -184,6 +184,12 @@ print(certificate.subject)
 
 ---
 
+## VSCode-friendly
+
+![VSCode](./Overview.png)
+
+---
+
 ## 📜 Licença
 
 MIT — livre para uso em ambientes de desenvolvimento e testes.
