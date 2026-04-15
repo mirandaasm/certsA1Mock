@@ -26,7 +26,7 @@ string_mask         = utf8only
 C  = BR
 ST = {UF}
 L  = {MUNICIPIO}
-O  = {RAZAO_SOCIAL}
+O  = ICP-Brasil
 OU = Certificado A1 Mock - Uso Exclusivo para Testes
 CN = {RAZAO_SOCIAL}:{CNPJ_SEM_PONTUACAO}
 

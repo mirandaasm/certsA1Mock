@@ -21,7 +21,7 @@ string_mask         = utf8only
 C  = BR
 ST = SP
 L  = Sao Paulo
-O  = Teste 002 de CNPJ Alfanumerico 20260416
+O  = ICP-Brasil
 OU = Certificado A1 Mock - Uso Exclusivo para Testes
 CN = Teste 002 de CNPJ Alfanumerico 20260416:02G0NC3Z000173
 
