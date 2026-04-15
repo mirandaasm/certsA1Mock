@@ -2,7 +2,8 @@
 # Certificado A1 Mockado - TEMPLATE
 # =============================================================================
 # Instrucoes:
-#   1. Copie este arquivo para: cert_config_{CNPJ_SEM_PONTUACAO}.cnf
+#   1. Copie este arquivo para: configs/cert_config.{CNPJ_SEM_PONTUACAO}.cnf
+#      Exemplo: configs/cert_config.11222333000181.cnf
 #   2. Substitua todos os campos marcados com {PLACEHOLDER}
 #   3. Execute: .\gerar_cert_a1_mock.ps1 -Cnpj {CNPJ_SEM_PONTUACAO}
 # =============================================================================
@@ -57,4 +58,4 @@ otherName.5 = 2.16.76.1.3.2;UTF8:{NOME_RESPONSAVEL}
 otherName.6 = 2.16.76.1.3.7;UTF8:{ENDERECO_COMPLETO_SEM_ACENTOS}
 
 # E-mail
-email = {EMAIL}
+eamil = {EMAIL}
